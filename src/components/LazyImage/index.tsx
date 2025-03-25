@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Spin } from 'antd';
+import React, {useState} from 'react';
+import {Spin} from 'antd';
 import styled from '@emotion/styled';
 
 interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src: string;
-  alt: string;
+    src: string;
+    alt: string;
 }
 
 const ImageContainer = styled.div`
@@ -24,25 +24,25 @@ const LoadingContainer = styled.div`
   background: rgba(255, 255, 255, 0.8);
 `;
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, ...props }) => {
-  const [isLoading, setIsLoading] = useState(true);
+const LazyImage: React.FC<LazyImageProps> = ({src, alt, ...props}) => {
+    const [isLoading, setIsLoading] = useState(true);
 
-  return (
-    <ImageContainer>
-      <img
-        src={src}
-        alt={alt}
-        onLoad={() => setIsLoading(false)}
-        style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s' }}
-        {...props}
-      />
-      {isLoading && (
-        <LoadingContainer>
-          <Spin size="small" />
-        </LoadingContainer>
-      )}
-    </ImageContainer>
-  );
+    return (
+        <ImageContainer>
+            <img
+                src={src}
+                alt={alt}
+                onLoad={() => setIsLoading(false)}
+                style={{opacity: isLoading ? 0 : 1, transition: 'opacity 0.3s'}}
+                {...props}
+            />
+            {isLoading && (
+                <LoadingContainer>
+                    <Spin size="small"/>
+                </LoadingContainer>
+            )}
+        </ImageContainer>
+    );
 };
 
-export default LazyImage; 
+export default LazyImage;

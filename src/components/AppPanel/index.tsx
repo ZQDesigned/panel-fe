@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Card } from 'antd';
-import { useWindow } from '../../contexts/WindowContext';
-import { WindowActionType } from '../../contexts/types';
-import type { Window } from '../../contexts/types';
+import {Card} from 'antd';
+import {useWindow} from '../../contexts/WindowContext';
+import type {Window} from '../../contexts/types';
+import {WindowActionType} from '../../contexts/types';
 import appConfigs from '../../apps/config';
 
 const PanelWrapper = styled.div`
@@ -51,55 +51,55 @@ const AppCard = styled(Card)`
 `;
 
 const AppPanel: React.FC = () => {
-  const { state, dispatch } = useWindow();
+    const {state, dispatch} = useWindow();
 
-  const handleAppClick = (app: { id: number; name: string; icon: React.ReactNode }) => {
-    const existingWindow = state.windows.find(w => w.appId === app.id);
-    
-    if (existingWindow) {
-      if (existingWindow.isMinimized) {
-        dispatch({ type: WindowActionType.RESTORE_WINDOW, payload: existingWindow.id });
-      }
-      dispatch({ type: WindowActionType.FOCUS_WINDOW, payload: existingWindow.id });
-    } else {
-      const defaultWidth = Math.min(1200, window.innerWidth * 0.8);
-      const defaultHeight = Math.min(800, window.innerHeight * 0.8);
-      
-      const newWindow: Omit<Window, 'zIndex' | 'isMinimized' | 'isMaximized'> = {
-        id: `window-${Date.now()}`,
-        appId: app.id,
-        title: app.name,
-        icon: app.icon,
-        position: {
-          x: (window.innerWidth - defaultWidth) / 2,
-          y: (window.innerHeight - defaultHeight) / 2,
-        },
-        size: {
-          width: defaultWidth,
-          height: defaultHeight,
-        },
-      };
-      
-      dispatch({ type: WindowActionType.OPEN_WINDOW, payload: newWindow });
-    }
-  };
+    const handleAppClick = (app: { id: number; name: string; icon: React.ReactNode }) => {
+        const existingWindow = state.windows.find(w => w.appId === app.id);
 
-  return (
-    <PanelWrapper>
-      <GridContainer>
-        {appConfigs.map((app) => (
-          <AppCard
-            key={app.id}
-            bordered={false}
-            onClick={() => handleAppClick(app)}
-          >
-            <div className="icon-wrapper">{app.icon}</div>
-            <p className="app-name">{app.name}</p>
-          </AppCard>
-        ))}
-      </GridContainer>
-    </PanelWrapper>
-  );
+        if (existingWindow) {
+            if (existingWindow.isMinimized) {
+                dispatch({type: WindowActionType.RESTORE_WINDOW, payload: existingWindow.id});
+            }
+            dispatch({type: WindowActionType.FOCUS_WINDOW, payload: existingWindow.id});
+        } else {
+            const defaultWidth = Math.min(1200, window.innerWidth * 0.8);
+            const defaultHeight = Math.min(800, window.innerHeight * 0.8);
+
+            const newWindow: Omit<Window, 'zIndex' | 'isMinimized' | 'isMaximized'> = {
+                id: `window-${Date.now()}`,
+                appId: app.id,
+                title: app.name,
+                icon: app.icon,
+                position: {
+                    x: (window.innerWidth - defaultWidth) / 2,
+                    y: (window.innerHeight - defaultHeight) / 2,
+                },
+                size: {
+                    width: defaultWidth,
+                    height: defaultHeight,
+                },
+            };
+
+            dispatch({type: WindowActionType.OPEN_WINDOW, payload: newWindow});
+        }
+    };
+
+    return (
+        <PanelWrapper>
+            <GridContainer>
+                {appConfigs.map((app) => (
+                    <AppCard
+                        key={app.id}
+                        bordered={false}
+                        onClick={() => handleAppClick(app)}
+                    >
+                        <div className="icon-wrapper">{app.icon}</div>
+                        <p className="app-name">{app.name}</p>
+                    </AppCard>
+                ))}
+            </GridContainer>
+        </PanelWrapper>
+    );
 };
 
 export default AppPanel;

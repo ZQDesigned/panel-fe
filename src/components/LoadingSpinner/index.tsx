@@ -1,9 +1,9 @@
 import React from 'react';
 import {Spin, Typography} from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import {LoadingOutlined} from '@ant-design/icons';
 import styled from '@emotion/styled';
 
-const { Text } = Typography;
+const {Text} = Typography;
 
 const LoadingContainer = styled.div`
   display: flex;
@@ -19,23 +19,23 @@ const StyledSpin = styled(Spin)`
 `;
 
 const LoadingSpinner: React.FC = () => {
-  return (
-    <LoadingContainer>
-      <StyledSpin
-        indicator={
-          <LoadingOutlined
-            style={{
-              fontSize: 24,
-              color: '#1890ff',
-            }}
-            spin
-          />
-        }
-        tip="加载中..."
-      />
-      <Text>加载中...</Text>
-    </LoadingContainer>
-  );
+    return (
+        <LoadingContainer>
+            <StyledSpin
+                indicator={
+                    <LoadingOutlined
+                        style={{
+                            fontSize: 24,
+                            color: '#1890ff',
+                        }}
+                        spin
+                    />
+                }
+                tip="加载中..."
+            />
+            <Text>加载中...</Text>
+        </LoadingContainer>
+    );
 };
 
 export default LoadingSpinner;

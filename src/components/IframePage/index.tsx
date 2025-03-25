@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import type { AppComponentProps } from '../../apps/types';
+import type {AppComponentProps} from '../../apps/types';
 
 const IframeContainer = styled.div`
   width: 100%;
@@ -16,19 +16,19 @@ const StyledIframe = styled.iframe`
 `;
 
 interface IframePageProps extends AppComponentProps {
-  src: string;
-  title: string;
+    src: string;
+    title: string;
 }
 
-const IframePage: React.FC<IframePageProps> = ({ src, title }) => {
-  return (
-    <IframeContainer>
-      <StyledIframe
-        src={src}
-        title={title}
-      />
-    </IframeContainer>
-  );
+const IframePage: React.FC<IframePageProps> = ({src, title}) => {
+    return (
+        <IframeContainer>
+            <StyledIframe
+                src={src}
+                title={title}
+            />
+        </IframeContainer>
+    );
 };
 
-export default IframePage; 
+export default IframePage;

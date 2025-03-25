@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
-import { globalStyles } from '../../styles/theme';
+import {motion} from 'framer-motion';
+import {globalStyles} from '../../styles/theme';
 
 interface ImageLoadingProps {
-  size?: number;
-  color?: string;
+    size?: number;
+    color?: string;
 }
 
 const LoadingContainer = styled.div<{ $size: number }>`
@@ -38,36 +38,36 @@ const LoadingDot = styled(motion.div)<{ $size: number; $color: string }>`
 `;
 
 const ImageLoading: React.FC<ImageLoadingProps> = ({
-  size = 40,
-  color = globalStyles.colors.primary,
-}) => {
-  return (
-    <LoadingContainer $size={size}>
-      <LoadingRing
-        $size={size}
-        $color={color}
-        animate={{ rotate: 360 }}
-        transition={{
-          duration: 1,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      <LoadingDot
-        $size={size}
-        $color={color}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [1, 0.6, 1],
-        }}
-        transition={{
-          duration: 1,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-    </LoadingContainer>
-  );
+                                                       size = 40,
+                                                       color = globalStyles.colors.primary,
+                                                   }) => {
+    return (
+        <LoadingContainer $size={size}>
+            <LoadingRing
+                $size={size}
+                $color={color}
+                animate={{rotate: 360}}
+                transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: "linear"
+                }}
+            />
+            <LoadingDot
+                $size={size}
+                $color={color}
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.6, 1],
+                }}
+                transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+        </LoadingContainer>
+    );
 };
 
-export default ImageLoading; 
+export default ImageLoading;

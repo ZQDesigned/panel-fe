@@ -1,15 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Card, Typography, Divider } from 'antd';
-import {
-  GithubOutlined,
-  LinkOutlined,
-  MailOutlined,
-  GlobalOutlined, QqOutlined,
-} from '@ant-design/icons';
-import { globalStyles } from '../../styles/theme';
+import {Card, Divider, Typography} from 'antd';
+import {GithubOutlined, GlobalOutlined, LinkOutlined, MailOutlined, QqOutlined,} from '@ant-design/icons';
+import {globalStyles} from '../../styles/theme';
 
-const { Title, Link } = Typography;
+const {Title, Link} = Typography;
 
 const SidebarContainer = styled.div`
   width: 240px;
@@ -55,100 +50,100 @@ const StyledLink = styled(Link)`
 `;
 
 const LeftSidebar: React.FC = () => {
-  const socialLinks = [
-    {
-      icon: <GithubOutlined />,
-      text: 'GitHub',
-      url: 'https://github.com/ZQDesigned',
-    },
-    {
-      icon: <LinkOutlined />,
-      text: '掘金',
-      url: 'https://juejin.cn/user/3908089946578621',
-    },
-    {
-      icon: <GlobalOutlined />,
-      text: '个人博客',
-      url: 'https://blog.zqdesigned.city',
-    },
-  ];
+    const socialLinks = [
+        {
+            icon: <GithubOutlined/>,
+            text: 'GitHub',
+            url: 'https://github.com/ZQDesigned',
+        },
+        {
+            icon: <LinkOutlined/>,
+            text: '掘金',
+            url: 'https://juejin.cn/user/3908089946578621',
+        },
+        {
+            icon: <GlobalOutlined/>,
+            text: '个人博客',
+            url: 'https://blog.zqdesigned.city',
+        },
+    ];
 
-  const contactLinks = [
-    {
-      icon: <MailOutlined />,
-      text: '发送邮件',
-      url: 'mailto:zqdesigned@mail.lnyynet.com',
-    },
-    {
-      icon: <QqOutlined />,
-      text: 'QQ',
-      url: 'https://qm.qq.com/q/J5dgcCZl2U',
-    }
-  ];
+    const contactLinks = [
+        {
+            icon: <MailOutlined/>,
+            text: '发送邮件',
+            url: 'mailto:zqdesigned@mail.lnyynet.com',
+        },
+        {
+            icon: <QqOutlined/>,
+            text: 'QQ',
+            url: 'https://qm.qq.com/q/J5dgcCZl2U',
+        }
+    ];
 
-  const relativeLinks = [
-    {
-      text: '项目仓库',
-      url: 'https://github.com/ZQDesigned/panel-fe',
-    },
-    {
-      text: 'Ant Design',
-      url: 'https://ant.design',
-    },
-    {
-      text: 'React',
-      url: 'https://reactjs.org',
-    },
-    {
-      text: 'TypeScript',
-      url: 'https://www.typescriptlang.org',
-    },
-    {
-      text: 'Emotion',
-      url: 'https://emotion.sh',
-    },
-    {
-      text: 'LoliAPI',
-      url: 'https://www.loliapi.cn',
-    }
-  ];
+    const relativeLinks = [
+        {
+            text: '项目仓库',
+            url: 'https://github.com/ZQDesigned/panel-fe',
+        },
+        {
+            text: 'Ant Design',
+            url: 'https://ant.design',
+        },
+        {
+            text: 'React',
+            url: 'https://reactjs.org',
+        },
+        {
+            text: 'TypeScript',
+            url: 'https://www.typescriptlang.org',
+        },
+        {
+            text: 'Emotion',
+            url: 'https://emotion.sh',
+        },
+        {
+            text: 'LoliAPI',
+            url: 'https://www.loliapi.cn',
+        }
+    ];
 
-  return (
-    <SidebarContainer>
-      <StyledCard>
-        <Title level={5}>社交媒体</Title>
-        <LinkGroup>
-          {socialLinks.map((link, index) => (
-            <StyledLink key={index} href={link.url} target="_blank">
-              {link.icon} {link.text}
-            </StyledLink>
-          ))}
-        </LinkGroup>
+    return (
+        <SidebarContainer>
+            <StyledCard>
+                <Title level={5}>社交媒体</Title>
+                <LinkGroup>
+                    {socialLinks.map((link, index) => (
+                        <StyledLink key={index} href={link.url} target="_blank">
+                            {link.icon} {link.text}
+                        </StyledLink>
+                    ))}
+                </LinkGroup>
 
-        <Divider style={{ margin: '16px 0' }} />
+                <Divider style={{margin: '16px 0'}}/>
 
-        <Title level={5}>联系方式</Title>
-        <LinkGroup>
-          {contactLinks.map((link, index) => (
-            <StyledLink key={index} href={link.url} target="_blank">
-              {link.icon} {link.text}
-            </StyledLink>
-          ))}
-        </LinkGroup>
+                <Title level={5}>联系方式</Title>
+                <LinkGroup>
+                    {contactLinks.map((link, index) => (
+                        <StyledLink key={index} href={link.url} target="_blank">
+                            {link.icon} {link.text}
+                        </StyledLink>
+                    ))}
+                </LinkGroup>
 
-        <Divider style={{ margin: '16px 0' }} />
+                <Divider style={{margin: '16px 0'}}/>
 
-        <Title level={5}>相关链接</Title>
-        <LinkGroup>
-          {relativeLinks.map((link, index) => (
-            <StyledLink key={index} href={link.url} target="_blank">
-              {link.text}
-            </StyledLink>
-          ))}
-        </LinkGroup>
-      </StyledCard>
-    </SidebarContainer>
-  );
+                <Title level={5}>相关链接</Title>
+                <LinkGroup>
+                    {relativeLinks.map((link, index) => (
+                        <StyledLink key={index} href={link.url} target="_blank">
+                            {link.text}
+                        </StyledLink>
+                    ))}
+                </LinkGroup>
+            </StyledCard>
+        </SidebarContainer>
+    );
 };
 
 export default LeftSidebar;

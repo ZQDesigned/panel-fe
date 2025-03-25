@@ -1,13 +1,13 @@
 import React, {useMemo} from 'react';
 import styled from '@emotion/styled';
-import { Card, Typography, Space, Tag, Spin, Tooltip } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import { globalStyles } from '../../styles/theme';
+import {Card, Space, Spin, Tag, Tooltip, Typography} from 'antd';
+import {QuestionCircleOutlined} from '@ant-design/icons';
+import {globalStyles} from '../../styles/theme';
 import LazyImage from '../LazyImage';
-import { useWeather } from '../../hooks/useWeather';
-import { formatDate } from '../../utils/dateUtils';
+import {useWeather} from '../../hooks/useWeather';
+import {formatDate} from '../../utils/dateUtils';
 
-const { Title, Paragraph } = Typography;
+const {Title, Paragraph} = Typography;
 
 const SidebarContainer = styled.div`
   width: 300px;
@@ -120,7 +120,7 @@ const WeatherTitle = styled.div`
 `;
 
 const RightSidebar: React.FC = () => {
-  const { weather, loading, error } = useWeather();
+    const {weather, loading, error} = useWeather();
 
     // 检测操作系统
     const isMacOS = useMemo(() => {
@@ -143,95 +143,95 @@ const RightSidebar: React.FC = () => {
         );
     }, [isMacOS]);
 
-  const renderWeatherContent = () => {
-    if (loading) {
-      return (
-        <div style={{ textAlign: 'center', padding: globalStyles.spacing.md }}>
-          <Spin size="small" />
-        </div>
-      );
-    }
+    const renderWeatherContent = () => {
+        if (loading) {
+            return (
+                <div style={{textAlign: 'center', padding: globalStyles.spacing.md}}>
+                    <Spin size="small"/>
+                </div>
+            );
+        }
 
-    if (error) {
-      return <WeatherError>{error}</WeatherError>;
-    }
+        if (error) {
+            return <WeatherError>{error}</WeatherError>;
+        }
 
-    if (!weather) {
-      return <WeatherError>暂无天气数据</WeatherError>;
-    }
+        if (!weather) {
+            return <WeatherError>暂无天气数据</WeatherError>;
+        }
+
+        return (
+            <WeatherInfo>
+                <WeatherRow>
+                    <span>{formatDate(new Date(weather.updateTime).getTime())}</span>
+                </WeatherRow>
+                <WeatherRow>
+                    <span>温度 {weather.temp}°C</span>
+                    <span>湿度 {weather.humidity}%</span>
+                </WeatherRow>
+                <WeatherRow>
+                    <span>{weather.text}/{weather.windDir}</span>
+                    <span>{weather.city}</span>
+                </WeatherRow>
+            </WeatherInfo>
+        );
+    };
 
     return (
-      <WeatherInfo>
-        <WeatherRow>
-          <span>{formatDate(new Date(weather.updateTime).getTime())}</span>
-        </WeatherRow>
-        <WeatherRow>
-          <span>温度 {weather.temp}°C</span>
-          <span>湿度 {weather.humidity}%</span>
-        </WeatherRow>
-        <WeatherRow>
-          <span>{weather.text}/{weather.windDir}</span>
-          <span>{weather.city}</span>
-        </WeatherRow>
-      </WeatherInfo>
+        <SidebarContainer>
+            <ProfileCard>
+                <ProfileHeader>
+                    <LazyImage
+                        src="/avatar.jpg"
+                        alt="头像"
+                        style={{
+                            width: '120px',
+                            height: '120px',
+                            borderRadius: '50%',
+                            margin: '0 auto',
+                        }}
+                    />
+                    <Title level={4} style={{marginTop: globalStyles.spacing.sm, marginBottom: 0}}>
+                        ZQDesigned
+                    </Title>
+                    <Paragraph type="secondary" style={{marginBottom: 0}}>
+                        分享开发历程、科技生活～
+                    </Paragraph>
+                    <OnlineStatus>
+                        <StatusDot/>
+                        <span>一日之计在于晨</span>
+                    </OnlineStatus>
+                </ProfileHeader>
+                <ProfileContent>
+                    <Space direction="vertical" size="small">
+                        <Tag color="blue">公告</Tag>
+                        <Paragraph>
+                            👋 Hi, 我是 ZQDesigned！欢迎你！
+                        </Paragraph>
+                        <Paragraph>
+                            🖱️ 页面异常？ 尝试 {refreshShortcut}
+                        </Paragraph>
+                        <Paragraph>
+                            📧 如需联系：<a href="mailto:zqdesigned@mail.lnyynet.com">发送邮件📨</a>
+                        </Paragraph>
+                    </Space>
+                </ProfileContent>
+            </ProfileCard>
+
+            <WeatherCard
+                title={
+                    <WeatherTitle>
+                        天气
+                        <Tooltip title="此位置基于您的 IP，可能存在错误">
+                            <QuestionCircleOutlined className="weather-tip"/>
+                        </Tooltip>
+                    </WeatherTitle>
+                }
+            >
+                {renderWeatherContent()}
+            </WeatherCard>
+        </SidebarContainer>
     );
-  };
-
-  return (
-    <SidebarContainer>
-      <ProfileCard>
-        <ProfileHeader>
-          <LazyImage
-            src="/avatar.jpg"
-            alt="头像"
-            style={{
-              width: '120px',
-              height: '120px',
-              borderRadius: '50%',
-              margin: '0 auto',
-            }}
-          />
-          <Title level={4} style={{ marginTop: globalStyles.spacing.sm, marginBottom: 0 }}>
-            ZQDesigned
-          </Title>
-          <Paragraph type="secondary" style={{ marginBottom: 0 }}>
-            分享开发历程、科技生活～
-          </Paragraph>
-          <OnlineStatus>
-            <StatusDot />
-            <span>一日之计在于晨</span>
-          </OnlineStatus>
-        </ProfileHeader>
-        <ProfileContent>
-          <Space direction="vertical" size="small">
-            <Tag color="blue">公告</Tag>
-            <Paragraph>
-              👋 Hi, 我是 ZQDesigned！欢迎你！
-            </Paragraph>
-            <Paragraph>
-              🖱️ 页面异常？ 尝试 {refreshShortcut}
-            </Paragraph>
-            <Paragraph>
-              📧 如需联系：<a href="mailto:zqdesigned@mail.lnyynet.com">发送邮件📨</a>
-            </Paragraph>
-          </Space>
-        </ProfileContent>
-      </ProfileCard>
-
-      <WeatherCard
-        title={
-          <WeatherTitle>
-            天气
-            <Tooltip title="此位置基于您的 IP，可能存在错误">
-              <QuestionCircleOutlined className="weather-tip" />
-            </Tooltip>
-          </WeatherTitle>
-        }
-      >
-        {renderWeatherContent()}
-      </WeatherCard>
-    </SidebarContainer>
-  );
 };
 
 export default RightSidebar;
