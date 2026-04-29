@@ -104,7 +104,7 @@ const LeftSidebar: React.FC = () => {
         },
         {
             text: 'LoliAPI',
-            url: 'https://www.loliapi.cn',
+            url: 'https://www.loliapi.com',
         }
     ];
 

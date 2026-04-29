@@ -96,4 +96,4 @@ bun dev
 
 - [Ant Design](https://ant.design)
 - [和风天气](https://dev.qweather.com)
-- [LoliAPI](https://www.loliapi.cn)
+- [LoliAPI](https://www.loliapi.com)

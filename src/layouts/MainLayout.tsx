@@ -26,7 +26,7 @@ const BackgroundWrapper = styled.div`
     bottom: 0;
     z-index: -1;
     overflow: hidden;
-    background-image: url('https://www.loliapi.cn/acg/');
+    background-image: url('https://www.loliapi.com/acg/');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
